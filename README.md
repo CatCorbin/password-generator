@@ -1,5 +1,13 @@
 # password-generator
 
+# Link
+
+Deployed password generator webpage:
+https://catcorbin.github.io/password-generator/
+
+Password generator repository:
+https://github.com/CatCorbin/password-generator
+
 ## Description
 
 This website is able to take specific criteria and give an output of a unique password to fit that criteria. Each time the output will be different as to create different passwords to keep the users account secure.

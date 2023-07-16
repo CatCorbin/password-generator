@@ -21,31 +21,45 @@ function writePassword() {
 function generatePassword() {
   //Questions asked to the user to tell us their password criteria
   var pass = "";
-  var noCharacters = prompt ("Choose password length between 8 and 128 characters.");
-  var upperRequest = confirm ("Does your passsword require uppercase letters?");
-  var lowerRequest = confirm ("Does your password require lowercase letters?");
-  var numberRequest = confirm ("Does your password require numbers?");
-  var specialRequest = confirm ("Does your password require any special characters?");
-  
-  if (upperRequest === true) {
-    pass = pass.concat(upper)
-  };
+  var noCharacters = prompt("Choose password length between 8 and 128 characters.");
+  if (noCharacters >= 8 && noCharacters <= 128) {
 
-  if (lowerRequest === true) {
-    pass = pass.concat(lower)
-  };
+    var upperRequest = confirm("Does your passsword require uppercase letters?");
+    var lowerRequest = confirm("Does your password require lowercase letters?");
+    var numberRequest = confirm("Does your password require numbers?");
+    var specialRequest = confirm("Does your password require any special characters?");
 
-  if (numberRequest === true) {
-    pass = pass.concat(number)
-  };
+    if (upperRequest === false && lowerRequest === false && numberRequest === false && specialRequest === false) {
+      alert("Must select at least one character type")
+      return ""
+    }
+    for (var i = 0; i < noCharacters; i++) {
+      if (upperRequest === true && pass.length<noCharacters) {
+        var randomIndex = Math.floor(Math.random() * 26)
+        pass = pass.concat(upper[randomIndex])
+      };
 
-  if (specialRequest === true) {
-    pass = pass.concat(specialCharacter)
-  };
+      if (lowerRequest === true && pass.length<noCharacters) {
+        var randomIndex = Math.floor(Math.random() * 26)
+        pass = pass.concat(lower[randomIndex])
+      };
 
-  for(var i=0;i<noCharacters.length;i++){
-    pass = Math.floor(Math.random() * noCharacters.length)
-  };
+      if (numberRequest === true && pass.length<noCharacters) {
+        var randomIndex = Math.floor(Math.random() * 10)
+        pass = pass.concat(number[randomIndex])
+      };
+
+      if (specialRequest === true && pass.length<noCharacters) {
+        var randomIndex = Math.floor(Math.random()) * 24
+        pass = pass.concat(specialCharacter[randomIndex])
+      };
+    };
+
+  }
+  else {
+    alert("Size must be 8-128")
+  }
+  return pass
 }
 
 // Add event listener to generate button
